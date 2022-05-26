@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+  Market Page
+{% endblock %}
+
+{% block content %}
+      <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                
+                <th scope="col">PROJECTNAME</th>
+                <th scope="col">PROJECTTYPE</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">DOWNLOAD PROJECT</th>
+                <th scope="col">DELETE PROJECT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+                <tr>
+                  
+                    <td>{{ item.filename }}</td>
+                    <td>{{ item.filetype }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>
+
+                              <a href="/download/{{item.id}}">
+                                <button type="button" class="button" style="background-color:green">
+                                  <span class="button__text">DOWNLOAD</span>
+                                  <span class="button__icon">
+                                      <ion-icon name="cloud-download-outline"></ion-icon>
+                                  </span>
+                                </button>
+                                  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+                              </a>
+
+                    </td>
+
+                    <td>
+
+                      <a href="/delete/{{item.id}}">
+                         <button type="button" class="button" style="background-color:red">
+                           <span class="button__text">DELETE</span>
+                           <span class="button__icon">
+                               <ion-icon name="cloud-download-outline"></ion-icon>
+                           </span>
+                         </button>
+                           <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+                       </a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
